@@ -38,39 +38,37 @@ def chelsea_players(**players):
 ###
 chelsea_players(name = "Palmer", age=25, position="Forward")
 
-class Ticket():
-    def __init__(self, title, status="Mới"):
-        self.title = title
-        self.status = status
-    def close(self):
-        self.status = "Đã đóng"
-dong = Ticket("Lỗi đăng nhập")
-print(dong.title)
-print(dong.status)
-dong.close()
-print(dong.status)
 
-class User:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    def hello(self):
-        print(f"Xin chào {self.name}, bạn {self.age} tuổi.")
-    def bye(self):
-        print(f"Tạm biệt {self.name}, hẹn gặp lại!")
-class Agent(User):
-    def __init__(self, name, age, level):
-        super().__init__(name, age)
-        self.level = level
-    def hello(self):
-        print(f"Xin chào {self.name}, bạn {self.age} tuổi. Cấp độ: {self.level}.")
-        super().hello()
-        print("Chào mừng bạn đến với hệ thống.")
-
-kh = Agent("Thang", 25, "Cao")
-kh.hello()
 
 def add(a, b):
     return a + b
 result = add(5, 3)
 print(result)
+
+#super cơ bản
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        print(f"{self.name} tạo ra một âm thanh.")
+
+class Dog(Animal):
+    def __init__(self, name, breed):
+        # 1. Gọi hàm __init__ của lớp Animal để thiết lập self.name
+        super().__init__(name) 
+        
+        # 2. Khởi tạo thêm thuộc tính riêng của Dog
+        self.breed = breed
+
+    def speak(self):
+        # Gọi lại hàm speak() của Animal
+        super().speak() 
+        # Thực thi thêm hành động riêng của Dog
+        print(f"{self.name} sủa: Gâu gâu! (Giống: {self.breed})")
+
+my_dog = Dog("Milu", "Corgi")
+my_dog.speak()
+
+
